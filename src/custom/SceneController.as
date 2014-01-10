@@ -43,7 +43,7 @@ package custom
 		{
 			if(delay > 0)
 			{
-				TweenLite.to(this, delay, {onComplete:nav, onCompleteParams:[fromScene, toScene]});
+				TweenLite.delayedCall(delay, nav, [fromScene, toScene]);
 			}
 			else
 			{
