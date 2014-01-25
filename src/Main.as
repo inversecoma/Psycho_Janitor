@@ -22,7 +22,7 @@ package
 		{
 			super();
 			
-			//Certain objects are visually offset down 38 pixels. I have no idea why. Trace of their y coordinate is equal to stagewidth/2 yet appears offset. WAT?
+			// Some objects are offset down the equivalent of 38 pixels visually. I have no idea why.
 			
 			stage.frameRate = 60;
 			stage.scaleMode = StageScaleMode.NO_SCALE;

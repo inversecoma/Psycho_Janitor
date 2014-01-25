@@ -3,11 +3,12 @@ package custom.scenes
 	import com.greensock.TimelineLite;
 	import com.greensock.TweenLite;
 	
+	import flash.media.Sound;
+	
 	import custom.Assets;
 	import custom.SceneController;
 	
 	import starling.display.Button;
-	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.display.Sprite;
@@ -24,6 +25,15 @@ package custom.scenes
 		private var start:Button;
 		private var background:Quad;
 		
+		private var woosh1:Sound;
+		private var woosh2:Sound;
+		
+		[Embed(source="../../assets/audio/effects/swoosh.mp3")]
+		private var Woosh:Class;
+		
+		[Embed(source="../../assets/audio/effects/swoosh2.mp3")]
+		private var Woosh2:Class;
+		
 		public function SceneStart(sceneController:SceneController)
 		{
 			super();
@@ -37,6 +47,9 @@ package custom.scenes
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
+			woosh1 = new Woosh();
+			woosh2 = new Woosh2();
+			
 			background = new Quad(Main.stageWidth, Main.stageHeight, 0xcc66cc);
 			addChild(background);
 			
@@ -49,6 +62,8 @@ package custom.scenes
 			start.y = Main.stageHeight - start.height - 38;//OFFSET YOU BITCH
 			start.addEventListener(TouchEvent.TOUCH, buttonListener);
 			
+			woosh2.play();
+			
 			TweenLite.from(background, .75, {scaleX:0, scaleY:0});
 			
 			TweenLite.from(title, 1, {x:-title.width});
@@ -60,29 +75,31 @@ package custom.scenes
 		{
 			var timeline:TimelineLite = new TimelineLite();
 			
-			timeline.insert(TweenLite.to(background, .75, {scaleX:0, scaleY:0}));
-			timeline.insert(TweenLite.to(title, 1, {x:-title.width}));
-			timeline.insert(TweenLite.to(start, .4, {y:start.y + start.height}));
+			timeline.insert(TweenLite.to(background, .75, {scaleX:0, scaleY:0}), .2);
+			timeline.insert(TweenLite.to(title, 1, {x:-title.width}), .2);
+			timeline.insert(TweenLite.to(start, .4, {y:start.y + start.height}), .2);
 			
 			return timeline;
 		}
 		
 		private function buttonListener(e:TouchEvent):void
 		{
-			var touch:Touch = e.getTouch(this);
-			
-			if(touch.phase == TouchPhase.BEGAN)//on finger down
+			var t:Touch = e.getTouch(this);
+			if(t) 
 			{
-				trace("down");
-			}
-			
-			if(touch.phase == TouchPhase.ENDED) //on finger up
-			{
-				trace("up");
-				
-				sceneController.nav(this, sceneController.PLAY, animateOut().duration());
-				
-				start.removeEventListener(TouchEvent.TOUCH, buttonListener);
+				switch(t.phase) 
+				{
+					case TouchPhase.BEGAN:
+						break;
+					
+					case TouchPhase.ENDED:
+						woosh1.play();
+						
+						sceneController.nav(this, sceneController.PLAY, animateOut().duration());
+						
+						start.removeEventListener(TouchEvent.TOUCH, buttonListener);
+						break;
+				}
 			}
 		}
 	}

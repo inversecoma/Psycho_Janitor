@@ -3,6 +3,8 @@ package custom.scenes
 	import com.greensock.TimelineLite;
 	import com.greensock.TweenLite;
 	
+	import flash.media.Sound;
+	
 	import custom.SceneController;
 	
 	import starling.display.Quad;
@@ -12,7 +14,12 @@ package custom.scenes
 
 	public class SceneSplash extends Sprite
 	{
+		[Embed(source="../../assets/audio/effects/splash.mp3")]
+		private var SplashSound:Class;
+		
 		private var sceneController:SceneController;
+		
+		private var splashSound:Sound;
 		
 		public function SceneSplash(sceneController:SceneController)
 		{
@@ -27,11 +34,16 @@ package custom.scenes
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
+			splashSound = new SplashSound();
+			
 			animate();
 		}
 		
 		private function animate():void
 		{
+			//noise!
+			splashSound.play();
+			
 			//container
 			var logo:Sprite = new Sprite();
 			logo.x = Main.stageWidth/2;
