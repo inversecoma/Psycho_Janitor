@@ -1,9 +1,11 @@
 package custom.scenes
 {
+	import com.greensock.TimelineLite;
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Elastic;
 	
 	import custom.SceneController;
+	import custom.components.Background;
 	import custom.components.Hero;
 	
 	import starling.display.Sprite;
@@ -12,8 +14,8 @@ package custom.scenes
 	public class ScenePlay extends Sprite
 	{
 		private var sceneController:SceneController;
-		
-		private var speech:Array = ["Hello.", "Welcome to the Global Game Jam test game.", "Look at the source code.", "Press ENTER to begin."];
+		private var background:Background = new Background();
+		private var hero:Hero = new Hero();
 		
 		public function ScenePlay(sceneController:SceneController)
 		{
@@ -22,31 +24,30 @@ package custom.scenes
 			this.sceneController = sceneController;
 			
 			this.addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			this.addEventListener(Event.ENTER_FRAME, enterFrame);
 		}
 		
 		private function onAddedToStage(e:Event):void
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
-			
-			var hero:Hero = new Hero();
+			trace("on added to stage in scene play");
+
+			addChild(background);
 			addChild(hero);
 			
-			hero.x = Main.stageWidth/2 - hero.width/2;
-			hero.y = Main.stageHeight/2 - hero.height/2;
+			hero.x = Main.stageWidth/3 - hero.width/2;
+			hero.y = Main.stageHeight*2/3 - hero.height/2;
 			
-			TweenLite.from(hero, 1, {y:Main.stageHeight, ease:Elastic.easeOut, easeParams:[2, 1]});
+			var timeline:TimelineLite = new TimelineLite();
 			
-			hero.startTalking(speech[1], countWords(speech[1]));
+			timeline.insert(TweenLite.from(hero, 1, {y:Main.stageHeight, ease:Elastic.easeOut, easeParams:[2, 1]}));	
+			
 		}
 		
-		private function countWords(input:String):int
+		public function enterFrame(e:Event):void
 		{
-			return input.match(/[^\s]+/g).length;
+			background.update(hero);
 		}
 		
-		private function endSpeech(e:Event):void
-		{
-			
-		}
 	}
 }
