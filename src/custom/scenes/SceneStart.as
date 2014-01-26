@@ -59,7 +59,7 @@ package custom.scenes
 			start = new Button(Assets.getAtlas().getTexture("start_default"), "", Assets.getAtlas().getTexture("start_over"));
 			addChild(start);
 			start.x = Main.stageWidth - start.width;
-			start.y = Main.stageHeight - start.height - 38;//OFFSET YOU BITCH
+			start.y = Main.stageHeight - start.height - 38;
 			start.addEventListener(TouchEvent.TOUCH, buttonListener);
 			
 			woosh2.play();
