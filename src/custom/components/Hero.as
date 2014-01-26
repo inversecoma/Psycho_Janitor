@@ -1,14 +1,15 @@
 package custom.components
 {
-	import flash.events.TimerEvent;
 	import flash.media.Sound;
 	import flash.utils.Timer;
 	
 	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
 	import starling.text.TextField;
-	import starling.utils.HAlign;
 	
 	public class Hero extends Sprite
 	{
@@ -34,12 +35,16 @@ package custom.components
 		private var speechIndex:int = 0;
 		private var currentWord:int;
 		private var textField:TextField;
-		
+		private var jumping:Boolean = false;
+		public var speed:int = 2;
+		public var jumpSpeed:int = 4;
+				
 		public function Hero()
 		{
 			super();
 			
 			this.addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			this.addEventListener(TouchEvent.TOUCH, buttonListener);
 		}
 		
 		private function onAddedToStage():void
@@ -54,74 +59,36 @@ package custom.components
 			eye2.x = eye1.x - eye1.width/.75;
 			eye2.y = eye2.height;
 			
-			textField = new TextField(head.width, 25, "");
-			textField.hAlign = HAlign.CENTER;
-			addChild(textField);
-			
-			textField.x = 0;
-			textField.y = head.y + head.height;
-			
 			addChild(head);
 			addChild(eye1);
 			addChild(eye2);
-			addChild(textField);
-			
-			keepTalking = new Timer(100);
 		}
 		
-		public function startTalking(words:String, maxCount:int = 0):void
-		{
-			this.speechIndex = speechIndex
-			this.maxCount = maxCount;
-			
-			keepTalking.delay = talk();
-			keepTalking.addEventListener(TimerEvent.TIMER, talkAgain);
-			keepTalking.start();
+		public function isJumping():Boolean {
+			return jumping;
 		}
 		
-		public function talk():int
-		{
-			currentSpeech = new this["Say"+Math.ceil(Math.random() * 7)]();
-			currentSpeech.play();
-			return currentSpeech.length;
+		private function setJumpingFalse():void {
+			this.jumping = false;
 		}
-		
-		public function talkAgain(e:TimerEvent):void
+
+		private function buttonListener(e:TouchEvent):void
 		{
-			updateTextField();
-			
-			count++;
-			
-			keepTalking.reset();
-			
-			if(count < maxCount)
+			var t:Touch = e.getTouch(this);
+			if(t) 
 			{
-				keepTalking.delay = talk();
-				keepTalking.start();
-			}
-			else
-			{
-				keepTalking.stop();
-				dispatchEvent(new Event("doneTalking"));
+				switch(t.phase) 
+				{
+					case TouchPhase.BEGAN:
+						jumping = true;
+						break;
+					
+					case TouchPhase.ENDED:
+						jumping = false;
+						break;
+				}
 			}
 		}
 		
-		private function updateTextField():void
-		{
-			currentWord++;
-			
-			/////
-			// need to purchase club greensock to use something like this...
-			/////
-			//			var stf:SplitTextField = new SplitTextField(text_tf, SplitTextField.TYPE_WORDS);
-			//			var explodeOrigin:Point = new Point(stf.width * 0.4, stf.height + 250);
-			//			for (var i:int = stf.textFields.length - 1; i > -1; i--) 
-			//			{
-			//				var tf:TextField = stf.textFields[i];
-			//				var angle:Number = Math.atan2(tf.y - explodeOrigin.y, tf.x - explodeOrigin.x) * 180 / Math.PI;
-			//				TweenMax.to(tf, 2, {physics2D:{angle:angle, velocity:Math.random() * 300 + 150, gravity:400}, scaleX:Math.random() * 4 - 2, scaleY:Math.random() * 4 - 2, rotation:Math.random() * 360 - 180, motionBlur:true, autoAlpha:0, delay:Math.random() * 0.5, ease:Quad.easeIn, repeat:1, yoyo:true, repeatDelay:0.7});
-			//			}
-			
-		}
 	}
 }
