@@ -2,7 +2,7 @@
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
 <!-- $TexturePacker:SmartUpdate:ebf0d26202f10f772fb51e45e423adf7:c59f1dce4d4e19dc308c1f1c2d88fa0c:cde709370900f12288f3449eded86f07$ -->
 <TextureAtlas imagePath="atlas.png">
-    <SubTexture name="Background" x="2" y="724" width="1280" height="720"/>
+    <SubTexture name="background" x="2" y="724" width="1280" height="720"/>
     <SubTexture name="dress" x="1768" y="1189" width="84" height="175"/>
     <SubTexture name="dumbell" x="1284" y="937" width="247" height="100"/>
     <SubTexture name="globe" x="1526" y="1203" width="71" height="90"/>

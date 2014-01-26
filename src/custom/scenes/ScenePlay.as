@@ -23,7 +23,7 @@ package custom.scenes
 	{
 		private var sceneController:SceneController;
 		private var hero:Hero = new Hero();
-		public var enemies:Array = [new Enemy(0),new Enemy(1),new Enemy(0),new Enemy(1),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(1),new Enemy(1),new Enemy(0)];
+		public var enemies:Array = [new Enemy(6),new Enemy(7),new Enemy(0),new Enemy(1),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(1),new Enemy(1),new Enemy(0)];
 		public var features:Array = [new Enemy(2),new Enemy(3),new Enemy(4),new Enemy(5),new Enemy(2),new Enemy(3),new Enemy(4),new Enemy(5),new Enemy(2),new Enemy(4)];
 		private var background:Background = new Background(Main.stageHeight,Main.stageWidth);
 		private var bgTween:TimelineLite;
@@ -58,17 +58,7 @@ package custom.scenes
 			
 			timeline.insert(TweenLite.from(hero, 1, {y:Main.stageHeight, ease:Elastic.easeOut, easeParams:[2, 1]}));	
 			
-			var jump:Button = new Button(Assets.getAtlas().getTexture("start_default"), "", Assets.getAtlas().getTexture("start_over"));
-			addChild(jump);
-			jump.addEventListener(TouchEvent.TOUCH, jumpListener);
-			jump.y = 650;
-			jump.x = 1180;
-			
-			var attack:Button = new Button(Assets.getAtlas().getTexture("start_over"), "", Assets.getAtlas().getTexture("start_default"));
-			addChild(attack);
-			attack.addEventListener(TouchEvent.TOUCH, attackListener);
-			attack.y = 650;
-			attack.x = 0;
+			stage.addEventListener(TouchEvent.TOUCH, touchListener);
 		}
 		
 		public function enterFrame(e:Event):void
@@ -121,13 +111,11 @@ package custom.scenes
 					removeChild(feature);
 				}
 			}
-			trace(hero.isAlive());
 			if (!hero.isAlive()) {
 				sceneController.nav(this, sceneController.CREDITS);
 			}
 		}
-		
-		private function jumpListener(e:TouchEvent):void
+		private function touchListener(e:TouchEvent):void
 		{
 			var t:Touch = e.getTouch(this);
 			if(t) 
@@ -138,24 +126,12 @@ package custom.scenes
 						break;
 					
 					case TouchPhase.ENDED:
-						hero.jump();
-						break;
-				}
-			}
-		}
-		
-		private function attackListener(e:TouchEvent):void
-		{
-			var t:Touch = e.getTouch(this);
-			if(t) 
-			{
-				switch(t.phase) 
-				{
-					case TouchPhase.BEGAN:
-						break;
-					
-					case TouchPhase.ENDED:
-						hero.attack();
+						if (t.globalX < Main.stageWidth/2) { 
+							hero.attack();
+						}
+						else {
+							hero.jump();
+						}
 						break;
 				}
 			}

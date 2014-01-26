@@ -113,7 +113,9 @@ package custom.components
 		}
 		public function loseHealth():void {
 			trace("losing health: " + healthNum);
-			removeChild(healths[healthNum]);
+			if (healthNum > -1) {
+				removeChild(healths[healthNum]);
+			}
 			healthNum -= 1;
 			if (healthNum < 0) {
 				alive = false;

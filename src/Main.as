@@ -75,12 +75,14 @@ package
 			trumpet = new Trumpet();
 			trumpet.play();
 
-			TweenLite.delayedCall(0, startStarling);
+			TweenLite.delayedCall(4, startStarling);
 		}
 		
 		private function startStarling():void
 		{
-			removeChild(vid);
+			if (vid.parent) {
+				vid.parent.removeChild(vid);
+			}
 			
 			viewPort = new Rectangle(0, 0, stageWidth, stageHeight);
 			myStarling = new Starling(custom.SceneController, stage, viewPort);

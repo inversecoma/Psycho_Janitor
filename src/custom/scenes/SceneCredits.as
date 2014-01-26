@@ -2,6 +2,7 @@ package custom.scenes
 {
 	import custom.SceneController;
 	
+	import starling.display.Quad;
 	import starling.display.Sprite;
 
 	public class SceneCredits extends Sprite
@@ -11,8 +12,9 @@ package custom.scenes
 		public function SceneCredits(sceneController:SceneController)
 		{
 			super();
-			
-			this.sceneController = sceneController;
+			var quad:Quad = new Quad(100,100,0xFF0000);
+			addChild(quad);
+			this.sceneController = sceneController; 
 		}
 	}
 }

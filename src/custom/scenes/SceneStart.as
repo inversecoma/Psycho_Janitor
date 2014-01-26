@@ -46,8 +46,8 @@ package custom.scenes
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
-			background = new Image(Assets.getAtlas().getTexture("Background"));
-			background2 = new Image(Assets.getAtlas().getTexture("Background"));
+			background = new Image(Assets.getAtlas().getTexture("background"));
+			background2 = new Image(Assets.getAtlas().getTexture("background"));
 			background2.x = background2.width-1;
 			bg = new Sprite();
 			bg.addChild(background);
@@ -82,7 +82,7 @@ package custom.scenes
 			pressTimeline.append(TweenLite.to(pressToPlay, 1, {alpha:0}));
 			pressTimeline.append(TweenLite.to(pressToPlay, 1, {alpha:1, onComplete:loopPress}));
 			
-			bg.addEventListener(TouchEvent.TOUCH, buttonListener);
+			stage.addEventListener(TouchEvent.TOUCH, buttonListener);
 		}
 		
 		private function loopPress():void
@@ -98,11 +98,6 @@ package custom.scenes
 		private function animateOut():TimelineLite
 		{
 			var timeline:TimelineLite = new TimelineLite();
-			
-			timeline.insert(TweenLite.to(background, .75, {scaleX:0, scaleY:0}), .2);
-			timeline.insert(TweenLite.to(title, 1, {x:-title.width}), .2);
-			timeline.insert(TweenLite.to(start, .4, {y:start.y + start.height}), .2);
-			
 			return timeline;
 		}
 		
@@ -118,8 +113,6 @@ package custom.scenes
 					
 					case TouchPhase.ENDED:
 						sceneController.nav(this, sceneController.PLAY, animateOut().duration());
-						
-						bg.removeEventListener(TouchEvent.TOUCH, buttonListener);
 						break;
 				}
 			}

@@ -1,9 +1,5 @@
 package custom.components
-{
-	import com.greensock.TimelineLite;
-	import com.greensock.TweenLite;
-	import com.greensock.easing.Linear;
-	
+{	
 	import custom.Assets;
 	
 	import starling.display.Image;
@@ -19,11 +15,14 @@ package custom.components
 		public const CHASE:int = 4;
 		public const PACE:int = 5;
 		public const LACE:int = 6;
+		public const CASE:int = 7;
 		
 		public var fullImage:Image;
 		private var brokenImages:Array;
 		public var spawned:Boolean = false;
 		public var piecesSpawned:Boolean = false;
+		public var destroyable:Boolean = false;
+		public var damages:Boolean = false;
 		
 		public function Enemy(TypeOfEnemy)
 		{
@@ -37,6 +36,7 @@ package custom.components
 					var vaseBroken4:Quad = new Image(Assets.getAtlas().getTexture("vaseBroken4"));
 					var vaseBroken5:Quad = new Image(Assets.getAtlas().getTexture("vaseBroken5"));
 					brokenImages = [vaseBroken1,vaseBroken2,vaseBroken3,vaseBroken4,vaseBroken5];
+					destroyable = true;
 					break;
 				case FACE:
 					fullImage = new Image(Assets.getAtlas().getTexture("shrubFull"));
@@ -46,6 +46,7 @@ package custom.components
 					var shrubBroken4:Quad = new Image(Assets.getAtlas().getTexture("shrubBroken4"));
 					var shrubBroken5:Quad = new Image(Assets.getAtlas().getTexture("shrubBroken5"));
 					brokenImages = [shrubBroken1,shrubBroken2,shrubBroken3,shrubBroken4,shrubBroken5];
+					destroyable = true;
 					break;
 				case MACE:
 					fullImage = new Image(Assets.getAtlas().getTexture("painting1"));
@@ -60,7 +61,10 @@ package custom.components
 					fullImage = new Image(Assets.getAtlas().getTexture("painting4"));
 					break;
 				case LACE:
-					fullImage = new Image(Assets.getAtlas().getTexture("vaseBroken3"));
+					fullImage = new Image(Assets.getAtlas().getTexture("dress"));
+					break;
+				case CASE:
+					fullImage = new Image(Assets.getAtlas().getTexture("pedastal"));
 					break;
 			}
 		}
@@ -70,11 +74,11 @@ package custom.components
 				fullImage.x -= hero.speed;
 			}
 			if (fullImage.getBounds(this).intersects(hero.getBounds(this)) && spawned){
-				if (hero.isAttacking()) {
+				if (hero.isAttacking() && this.destroyable) {
 					removeChild(fullImage);
 					destroy(fullImage.x,fullImage.y);
 				}
-				else {
+				else if (this.damages) {
 					hero.loseHealth();
 				}
 			}
