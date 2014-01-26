@@ -45,7 +45,7 @@
 	<initialWindow>
 		<!-- The main SWF or HTML file of the application. Required. -->
 		<!-- Note: In Flash Builder, the SWF reference is set automatically. -->
-		<content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
+		<content>Main.swf</content>
 		
 		<!-- The title of the main window. Optional. -->
 		<!-- <title></title> -->
@@ -96,7 +96,7 @@
 
         <!-- Whether the app launches in full screen. Optional. Mobile only. Default false -->
 
-        <fullScreen>true</fullScreen>
+       <!--  <fullScreen>true</fullScreen> -->
 
         <!-- The render mode for the app (either auto, cpu, gpu, or direct). Optional. Default auto -->
 
