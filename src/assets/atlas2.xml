@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:0cf9b9820c5716d62a5a9ff458a399a3:48864dc3dcbb4fddfca483888d35e3b8:e91f6e080129efa96cedaf752ecafaeb$ -->
+<TextureAtlas imagePath="atlas2.png">
+    <SubTexture name="frontface" x="2" y="2" width="1856" height="1911" frameX="-37" frameY="-41" frameWidth="1920" frameHeight="2005"/>
+</TextureAtlas>
