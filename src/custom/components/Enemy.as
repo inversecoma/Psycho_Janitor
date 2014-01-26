@@ -23,10 +23,13 @@ package custom.components
 		public var piecesSpawned:Boolean = false;
 		public var destroyable:Boolean = false;
 		public var damages:Boolean = false;
+		public var typeOfEnemy:int;
+		public var yPos:int = 400;
 		
 		public function Enemy(TypeOfEnemy)
 		{
 			super();
+			this.typeOfEnemy = TypeOfEnemy;
 			switch(TypeOfEnemy) {
 				case VASE:
 					fullImage = new Image(Assets.getAtlas().getTexture("vaseFull"));
@@ -37,6 +40,7 @@ package custom.components
 					var vaseBroken5:Quad = new Image(Assets.getAtlas().getTexture("vaseBroken5"));
 					brokenImages = [vaseBroken1,vaseBroken2,vaseBroken3,vaseBroken4,vaseBroken5];
 					destroyable = true;
+					this.yPos = 400;
 					break;
 				case FACE:
 					fullImage = new Image(Assets.getAtlas().getTexture("shrubFull"));
@@ -47,6 +51,7 @@ package custom.components
 					var shrubBroken5:Quad = new Image(Assets.getAtlas().getTexture("shrubBroken5"));
 					brokenImages = [shrubBroken1,shrubBroken2,shrubBroken3,shrubBroken4,shrubBroken5];
 					destroyable = true;
+					this.yPos = 400;
 					break;
 				case MACE:
 					fullImage = new Image(Assets.getAtlas().getTexture("painting1"));
@@ -60,11 +65,27 @@ package custom.components
 				case PACE:
 					fullImage = new Image(Assets.getAtlas().getTexture("painting4"));
 					break;
-				case LACE:
-					fullImage = new Image(Assets.getAtlas().getTexture("dress"));
+				case 6:
+					fullImage = new Image(Assets.getAtlas().getTexture("kingTut"));
+					this.yPos = 220;
 					break;
-				case CASE:
+				case 7:
 					fullImage = new Image(Assets.getAtlas().getTexture("pedastal"));
+					this.yPos = 330;
+					break;
+				case 8:
+					fullImage = new Image(Assets.getAtlas().getTexture("pillar"));
+					this.yPos = -20;
+					fullImage.scaleX = fullImage.scaleY = 1.8;
+					break;
+				case 9:
+					fullImage = new Image(Assets.getAtlas().getTexture("sculpture"));
+					this.yPos = 100;
+					break;
+				case 10:
+					fullImage = new Image(Assets.getAtlas().getTexture("dress"));
+					this.yPos = 300;
+					fullImage.scaleX = fullImage.scaleY = 1.5;
 					break;
 			}
 		}
@@ -86,7 +107,12 @@ package custom.components
 		
 		public function move(hero):void {
 			if (spawned) {
-				fullImage.x -= hero.speed;
+				if (this.getTypeOfEnemy() == 8) {
+					fullImage.x -= hero.speed * 2;
+				}
+				else {
+					fullImage.x -= hero.speed;
+				}
 			}
 		}
 		
@@ -120,6 +146,14 @@ package custom.components
 		
 		public function getNumChildren():int {
 			return numChildren;
+		}
+		
+		public function getTypeOfEnemy():int {
+			return this.typeOfEnemy;
+		}
+		
+		public function getYPos():int {
+			return this.yPos;
 		}
 		
 	}

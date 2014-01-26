@@ -62,7 +62,7 @@ package custom.components
 				health.y+=250;
 				health.x+=100*i
 				i+=1;
-				addChild(health);
+				//addChild(health);
 			}
 		}
 		

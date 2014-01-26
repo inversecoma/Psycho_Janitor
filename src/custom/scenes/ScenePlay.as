@@ -3,16 +3,12 @@ package custom.scenes
 	import com.greensock.TimelineLite;
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Elastic;
-	import com.greensock.easing.Linear;
 	
-	import custom.Assets;
 	import custom.SceneController;
 	import custom.components.Background;
 	import custom.components.Enemy;
 	import custom.components.Hero;
 	
-	import starling.display.Button;
-	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.Touch;
@@ -23,7 +19,7 @@ package custom.scenes
 	{
 		private var sceneController:SceneController;
 		private var hero:Hero = new Hero();
-		public var enemies:Array = [new Enemy(6),new Enemy(7),new Enemy(0),new Enemy(1),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(1),new Enemy(1),new Enemy(0)];
+		public var enemies:Array = [new Enemy(0),new Enemy(1),new Enemy(6),new Enemy(7),new Enemy(8),new Enemy(9),new Enemy(10),new Enemy(0),new Enemy(1),new Enemy(1)];
 		public var features:Array = [new Enemy(2),new Enemy(3),new Enemy(4),new Enemy(5),new Enemy(2),new Enemy(3),new Enemy(4),new Enemy(5),new Enemy(2),new Enemy(4)];
 		private var background:Background = new Background(Main.stageHeight,Main.stageWidth);
 		private var bgTween:TimelineLite;
@@ -67,23 +63,28 @@ package custom.scenes
 			hero.update();
 			background.update(hero);
 			//trace(enemyNum);
-			if (hero.distance % 1000 == 0) {
+			if (hero.distance % 1500 == 0) {
 				//enemies[enemyNum] = new Enemy(0);
 				enemies[enemyNum].fullImage.x = Main.stageWidth;
-				enemies[enemyNum].fullImage.y = 400;
+				enemies[enemyNum].fullImage.y = enemies[enemyNum].getYPos();
 				enemies[enemyNum].spawn();
-				addChild(enemies[enemyNum]);
+				if (enemies[enemyNum].getTypeOfEnemy() == 8){
+					addChild(enemies[enemyNum]);
+				}
+				else {
+					addChildAt(enemies[enemyNum], getChildIndex(hero));
+				}
 				enemyNum+=1;
 				if (enemyNum % 10 == 0) {
 					enemyNum = 0;
 				}
 			}
-			if (hero.distance % 3800 == 0) {
+			if (hero.distance % 3000 == 0) {
 				//features[featureNum] = new Enemy(1);
 				features[featureNum].fullImage.x = Main.stageWidth;
 				features[featureNum].fullImage.y = 100 + Math.round(Math.random()*100 - Math.random()*100);
 				features[featureNum].spawn();
-				addChild(features[featureNum]);
+				addChildAt(features[featureNum], getChildIndex(hero));
 				featureNum+=1;
 				if (featureNum % 10 == 0) {
 					featureNum = 0;

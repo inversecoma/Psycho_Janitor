@@ -73,7 +73,7 @@ package custom.scenes
 			bgTween.insert(TweenLite.to(bg, 20, {x:-background.width, ease:Linear.easeNone, onComplete:loopBG}));
 			
 			var pressToPlay:Image = new Image(Assets.getAtlas().getTexture("pressToStart"));
-			pressToPlay.scaleX = pressToPlay.scaleY = .5 * Main.scale;
+			pressToPlay.scaleX = pressToPlay.scaleY = .75 * Main.scale;
 			pressToPlay.x = Main.stageWidth/2 - pressToPlay.width/2;
 			pressToPlay.y = Main.stageHeight - pressToPlay.height*2 - 38;
 			addChild(pressToPlay);
@@ -95,12 +95,6 @@ package custom.scenes
 			bgTween.restart();
 		}
 		
-		private function animateOut():TimelineLite
-		{
-			var timeline:TimelineLite = new TimelineLite();
-			return timeline;
-		}
-		
 		private function buttonListener(e:TouchEvent):void
 		{
 			var t:Touch = e.getTouch(this);
@@ -112,7 +106,8 @@ package custom.scenes
 						break;
 					
 					case TouchPhase.ENDED:
-						sceneController.nav(this, sceneController.PLAY, animateOut().duration());
+
+						sceneController.nav(this, sceneController.STORE);
 						break;
 				}
 			}
