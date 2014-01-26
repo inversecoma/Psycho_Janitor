@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:5bfbe61b25a4de627c3bbaa9168949ac:08bb94a9013d7eb7e1f78f1041ad674c:cde709370900f12288f3449eded86f07$ -->
+<!-- $TexturePacker:SmartUpdate:e18935ea349b3d9c2ef93fdca4e9d945:c3aecd41c4ecd8f17aea8b7c8a140f81:cde709370900f12288f3449eded86f07$ -->
 <TextureAtlas imagePath="atlas.png">
-    <SubTexture name="start_default" x="332" y="2" width="94" height="26" frameX="0" frameY="-1" frameWidth="96" frameHeight="32"/>
-    <SubTexture name="start_over" x="234" y="2" width="96" height="32"/>
+    <SubTexture name="start_default" x="100" y="92" width="94" height="26" frameX="0" frameY="-1" frameWidth="96" frameHeight="32"/>
+    <SubTexture name="start_over" x="2" y="92" width="96" height="32"/>
     <SubTexture name="title" x="2" y="2" width="230" height="88" frameX="-13" frameY="-5" frameWidth="256" frameHeight="96"/>
+    <SubTexture name="vaseBroken1" x="422" y="2" width="63" height="68"/>
+    <SubTexture name="vaseBroken2" x="2" y="126" width="70" height="77"/>
+    <SubTexture name="vaseBroken3" x="356" y="2" width="64" height="64"/>
+    <SubTexture name="vaseBroken4" x="356" y="68" width="60" height="60"/>
+    <SubTexture name="vaseBroken5" x="100" y="120" width="76" height="57"/>
+    <SubTexture name="vaseFull" x="234" y="2" width="120" height="148" frameX="-17" frameY="-4" frameWidth="150" frameHeight="160"/>
 </TextureAtlas>
