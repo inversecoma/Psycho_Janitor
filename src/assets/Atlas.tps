@@ -75,9 +75,9 @@
         <key>fixedTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>1024</int>
+            <int>2048</int>
             <key>height</key>
-            <int>1024</int>
+            <int>2048</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
         <false/>
@@ -169,6 +169,12 @@
             <filename>parts/title.png</filename>
             <filename>parts/start_over.png</filename>
             <filename>parts/start_default.png</filename>
+            <filename>parts/vaseFull.png</filename>
+            <filename>parts/vaseBroken1.png</filename>
+            <filename>parts/vaseBroken2.png</filename>
+            <filename>parts/vaseBroken3.png</filename>
+            <filename>parts/vaseBroken4.png</filename>
+            <filename>parts/vaseBroken5.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

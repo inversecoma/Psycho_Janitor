@@ -3,7 +3,7 @@ package custom
 	import com.greensock.TweenLite;
 	
 	import custom.scenes.SceneCredits;
-	import custom.scenes.ScenePick;
+	import custom.scenes.SceneStore;
 	import custom.scenes.ScenePlay;
 	import custom.scenes.SceneSplash;
 	import custom.scenes.SceneStart;
@@ -16,13 +16,13 @@ package custom
 		public const SPLASH:int  = 0;
 		public const START:int 	 = 1;
 		public const PLAY:int 	 = 2;
-		public const PICK:int 	 = 3;
+		public const STORE:int 	 = 3;
 		public const CREDITS:int = 4;
 		
 		private var splash:SceneSplash;
 		private var start:SceneStart;
 		private var play:ScenePlay;
-		private var pick:ScenePick;
+		private var store:SceneStore;
 		private var credits:SceneCredits;
 
 		public function SceneController()
@@ -67,9 +67,9 @@ package custom
 						addChild(play);
 						break;
 					
-					case PICK:
-						pick = new ScenePick(this);
-						addChild(pick);
+					case STORE:
+						store = new SceneStore(this);
+						addChild(store);
 						break;
 					
 					case CREDITS:
