@@ -2,6 +2,8 @@ package custom.scenes
 {
 	import com.greensock.TimelineLite;
 	import com.greensock.TweenLite;
+	import com.greensock.easing.Elastic;
+	import com.greensock.easing.Linear;
 	
 	import flash.media.Sound;
 	
@@ -16,6 +18,7 @@ package custom.scenes
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
+	import starling.filters.BlurFilter;
 
 	public class SceneStart extends Sprite
 	{
@@ -23,16 +26,11 @@ package custom.scenes
 		
 		private var title:Image;
 		private var start:Button;
-		private var background:Quad;
+		private var bg:Sprite;
+		private var background:Image;
+		private var background2:Image;
 		
-		private var woosh1:Sound;
-		private var woosh2:Sound;
-		
-		[Embed(source="../../assets/audio/effects/swoosh.mp3")]
-		private var Woosh:Class;
-		
-		[Embed(source="../../assets/audio/effects/swoosh2.mp3")]
-		private var Woosh2:Class;
+		private var bgTween:TimelineLite;
 		
 		public function SceneStart(sceneController:SceneController)
 		{
@@ -47,28 +45,50 @@ package custom.scenes
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
-			woosh1 = new Woosh();
-			woosh2 = new Woosh2();
-			
-			background = new Quad(Main.stageWidth, Main.stageHeight, 0xcc66cc);
-			addChild(background);
+			background = new Image(Assets.getAtlas().getTexture("background"));
+			background2 = new Image(Assets.getAtlas().getTexture("background"));
+			background2.x = background2.width-1;
+			bg = new Sprite();
+			bg.addChild(background);
+			bg.addChild(background2);
+			addChild(bg);
 			
 			title = new Image(Assets.getAtlas().getTexture("title"));
 			addChild(title);
+			title.x = Main.stageWidth/2 - title.width/2;
+			title.y = 75;
 			
+			var fadeIn:Quad = new Quad(Main.stageWidth, Main.stageHeight, 0x000000);
+			addChild(fadeIn);
+			
+			TweenLite.to(fadeIn, 1, {alpha:0, delay:.5});
+
 			start = new Button(Assets.getAtlas().getTexture("start_default"), "", Assets.getAtlas().getTexture("start_over"));
 			addChild(start);
 			start.x = Main.stageWidth - start.width;
 			start.y = Main.stageHeight - start.height - 38;
 			start.addEventListener(TouchEvent.TOUCH, buttonListener);
+
 			
-			woosh2.play();
+			//TweenLite.from(background, .75, {scaleX:0, scaleY:0});
 			
-			TweenLite.from(background, .75, {scaleX:0, scaleY:0});
+			TweenLite.from(title, 1.5, {y:-title.height, delay:.5, ease:Linear.easeNone});//Elastic.easeOut, easeParams:[2,2]
 			
-			TweenLite.from(title, 1, {x:-title.width});
+			bgTween = new TimelineLite();
 			
-			TweenLite.from(start, .4, {y:start.y + start.height, delay:.65});
+			bgTween.insert(TweenLite.to(bg, 20, {x:-background.width, ease:Linear.easeNone, onComplete:loopBG}));
+			//TweenLite.from(start, .4, {y:start.y + start.height, delay:.65});
+			
+//			var image:Image = new Image(Assets.getAtlas().getTexture("vaseFull"));
+//			addChild(image);
+//			
+//			image.filter = BlurFilter.createGlow(0x000000, 1, 1, .75);
+//			addChild(image);
+		}
+		
+		private function loopBG():void
+		{
+			bgTween.restart();
 		}
 		
 		private function animateOut():TimelineLite
@@ -93,7 +113,7 @@ package custom.scenes
 						break;
 					
 					case TouchPhase.ENDED:
-						woosh1.play();
+						//woosh1.play();
 						
 						sceneController.nav(this, sceneController.STORE, animateOut().duration());
 						

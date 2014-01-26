@@ -166,15 +166,44 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>parts/title.png</filename>
-            <filename>parts/start_over.png</filename>
-            <filename>parts/start_default.png</filename>
-            <filename>parts/vaseFull.png</filename>
-            <filename>parts/vaseBroken1.png</filename>
-            <filename>parts/vaseBroken2.png</filename>
-            <filename>parts/vaseBroken3.png</filename>
-            <filename>parts/vaseBroken4.png</filename>
-            <filename>parts/vaseBroken5.png</filename>
+            <filename>parts/title/start_default.png</filename>
+            <filename>parts/title/start_over.png</filename>
+            <filename>parts/background/background.png</filename>
+            <filename>parts/intro/title.png</filename>
+            <filename>parts/features/shrub/shrubFull.png</filename>
+            <filename>parts/features/vase/vaseBroken1.png</filename>
+            <filename>parts/features/vase/vaseBroken2.png</filename>
+            <filename>parts/features/vase/vaseBroken3.png</filename>
+            <filename>parts/features/vase/vaseBroken4.png</filename>
+            <filename>parts/features/vase/vaseBroken5.png</filename>
+            <filename>parts/features/vase/vaseFull.png</filename>
+            <filename>parts/features/shrub/shrubBroken1.png</filename>
+            <filename>parts/features/shrub/shrubBroken2.png</filename>
+            <filename>parts/features/shrub/shrubBroken3.png</filename>
+            <filename>parts/features/shrub/shrubBroken4.png</filename>
+            <filename>parts/features/shrub/shrubBroken5.png</filename>
+            <filename>parts/weapons/weaponBroom.png</filename>
+            <filename>parts/weapons/weaponMop.png</filename>
+            <filename>parts/weapons/weaponShovel.png</filename>
+            <filename>parts/features/misc/sculpture.png</filename>
+            <filename>parts/features/misc/dress.png</filename>
+            <filename>parts/features/misc/globe.png</filename>
+            <filename>parts/features/misc/kingTut.png</filename>
+            <filename>parts/features/misc/pedastal.png</filename>
+            <filename>parts/features/background/pillar.png</filename>
+            <filename>parts/features/background/painting4.png</filename>
+            <filename>parts/features/background/painting1.png</filename>
+            <filename>parts/features/background/painting2.png</filename>
+            <filename>parts/features/background/painting3.png</filename>
+            <filename>parts/store/mod3.png</filename>
+            <filename>parts/store/mod1.png</filename>
+            <filename>parts/store/mod2.png</filename>
+            <filename>parts/store/pills.png</filename>
+            <filename>parts/store/shoes1.png</filename>
+            <filename>parts/store/shoes2.png</filename>
+            <filename>parts/store/dumbell.png</filename>
+            <filename>parts/store/lockerBG.png</filename>
+            <filename>parts/store/lockerDoor.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
