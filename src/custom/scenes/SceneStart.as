@@ -31,6 +31,7 @@ package custom.scenes
 		private var background2:Image;
 		
 		private var bgTween:TimelineLite;
+		private var pressTimeline:TimelineLite
 		
 		public function SceneStart(sceneController:SceneController)
 		{
@@ -45,13 +46,15 @@ package custom.scenes
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
-			background = new Image(Assets.getAtlas().getTexture("background"));
-			background2 = new Image(Assets.getAtlas().getTexture("background"));
+			background = new Image(Assets.getAtlas().getTexture("Background"));
+			background2 = new Image(Assets.getAtlas().getTexture("Background"));
 			background2.x = background2.width-1;
 			bg = new Sprite();
 			bg.addChild(background);
 			bg.addChild(background2);
 			addChild(bg);
+			
+			bg.scaleX = bg.scaleY = Main.scale;
 			
 			title = new Image(Assets.getAtlas().getTexture("title"));
 			addChild(title);
@@ -62,28 +65,29 @@ package custom.scenes
 			addChild(fadeIn);
 			
 			TweenLite.to(fadeIn, 1, {alpha:0, delay:.5});
-
-			start = new Button(Assets.getAtlas().getTexture("start_default"), "", Assets.getAtlas().getTexture("start_over"));
-			addChild(start);
-			start.x = Main.stageWidth - start.width;
-			start.y = Main.stageHeight - start.height - 38;
-			start.addEventListener(TouchEvent.TOUCH, buttonListener);
-
-			
-			//TweenLite.from(background, .75, {scaleX:0, scaleY:0});
 			
 			TweenLite.from(title, 1.5, {y:-title.height, delay:.5, ease:Linear.easeNone});//Elastic.easeOut, easeParams:[2,2]
 			
 			bgTween = new TimelineLite();
 			
 			bgTween.insert(TweenLite.to(bg, 20, {x:-background.width, ease:Linear.easeNone, onComplete:loopBG}));
-			//TweenLite.from(start, .4, {y:start.y + start.height, delay:.65});
 			
-//			var image:Image = new Image(Assets.getAtlas().getTexture("vaseFull"));
-//			addChild(image);
-//			
-//			image.filter = BlurFilter.createGlow(0x000000, 1, 1, .75);
-//			addChild(image);
+			var pressToPlay:Image = new Image(Assets.getAtlas().getTexture("pressToStart"));
+			pressToPlay.scaleX = pressToPlay.scaleY = .5 * Main.scale;
+			pressToPlay.x = Main.stageWidth/2 - pressToPlay.width/2;
+			pressToPlay.y = Main.stageHeight - pressToPlay.height*2 - 38;
+			addChild(pressToPlay);
+			
+			pressTimeline = new TimelineLite();
+			pressTimeline.append(TweenLite.to(pressToPlay, 1, {alpha:0}));
+			pressTimeline.append(TweenLite.to(pressToPlay, 1, {alpha:1, onComplete:loopPress}));
+			
+			bg.addEventListener(TouchEvent.TOUCH, buttonListener);
+		}
+		
+		private function loopPress():void
+		{
+			pressTimeline.restart();
 		}
 		
 		private function loopBG():void
@@ -113,11 +117,9 @@ package custom.scenes
 						break;
 					
 					case TouchPhase.ENDED:
-						//woosh1.play();
-						
 						sceneController.nav(this, sceneController.PLAY, animateOut().duration());
 						
-						start.removeEventListener(TouchEvent.TOUCH, buttonListener);
+						bg.removeEventListener(TouchEvent.TOUCH, buttonListener);
 						break;
 				}
 			}
