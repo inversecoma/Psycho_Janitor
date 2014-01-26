@@ -31,7 +31,6 @@ package custom.components
 			switch(TypeOfEnemy) {
 				case VASE:
 					fullImage = new Image(Assets.getAtlas().getTexture("vaseFull"));
-					trace("x: " + x + ", y: " + y);
 					var vaseBroken1:Quad = new Image(Assets.getAtlas().getTexture("vaseBroken1"));
 					var vaseBroken2:Quad = new Image(Assets.getAtlas().getTexture("vaseBroken2"));
 					var vaseBroken3:Quad = new Image(Assets.getAtlas().getTexture("vaseBroken3"));
@@ -40,19 +39,25 @@ package custom.components
 					brokenImages = [vaseBroken1,vaseBroken2,vaseBroken3,vaseBroken4,vaseBroken5];
 					break;
 				case FACE:
-					fullImage = new Image(Assets.getAtlas().getTexture("vaseBroken1"));
+					fullImage = new Image(Assets.getAtlas().getTexture("shrubFull"));
+					var shrubBroken1:Quad = new Image(Assets.getAtlas().getTexture("shrubBroken1"));
+					var shrubBroken2:Quad = new Image(Assets.getAtlas().getTexture("shrubBroken2"));
+					var shrubBroken3:Quad = new Image(Assets.getAtlas().getTexture("shrubBroken3"));
+					var shrubBroken4:Quad = new Image(Assets.getAtlas().getTexture("shrubBroken4"));
+					var shrubBroken5:Quad = new Image(Assets.getAtlas().getTexture("shrubBroken5"));
+					brokenImages = [shrubBroken1,shrubBroken2,shrubBroken3,shrubBroken4,shrubBroken5];
 					break;
 				case MACE:
-					fullImage = new Image(Assets.getAtlas().getTexture("vaseBroken2"));
+					fullImage = new Image(Assets.getAtlas().getTexture("painting1"));
 					break;
 				case RACE:
-					fullImage = new Image(Assets.getAtlas().getTexture("vaseBroken3"));
+					fullImage = new Image(Assets.getAtlas().getTexture("painting2"));
 					break;
 				case CHASE:
-					fullImage = new Image(Assets.getAtlas().getTexture("vaseBroken4"));
+					fullImage = new Image(Assets.getAtlas().getTexture("painting3"));
 					break;
 				case PACE:
-					fullImage = new Image(Assets.getAtlas().getTexture("vaseBroken1"));
+					fullImage = new Image(Assets.getAtlas().getTexture("painting4"));
 					break;
 				case LACE:
 					fullImage = new Image(Assets.getAtlas().getTexture("vaseBroken3"));

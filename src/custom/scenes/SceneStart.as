@@ -115,7 +115,7 @@ package custom.scenes
 					case TouchPhase.ENDED:
 						//woosh1.play();
 						
-						sceneController.nav(this, sceneController.STORE, animateOut().duration());
+						sceneController.nav(this, sceneController.PLAY, animateOut().duration());
 						
 						start.removeEventListener(TouchEvent.TOUCH, buttonListener);
 						break;

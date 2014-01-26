@@ -10,6 +10,7 @@ package custom
 	
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import custom.scenes.SceneScore;
 
 	public class SceneController extends Sprite
 	{
@@ -18,12 +19,14 @@ package custom
 		public const PLAY:int 	 = 2;
 		public const STORE:int 	 = 3;
 		public const CREDITS:int = 4;
+		public const SCORE:int   = 5;
 		
 		private var splash:SceneSplash;
 		private var start:SceneStart;
 		private var play:ScenePlay;
 		private var store:SceneStore;
 		private var credits:SceneCredits;
+		private var score:SceneScore;
 
 		public function SceneController()
 		{
@@ -36,7 +39,7 @@ package custom
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
-			nav(null, START);
+			nav(null, PLAY);
 		}
 		
 		public function nav(fromScene:Sprite, toScene:int, delay:Number=0):void
@@ -75,6 +78,11 @@ package custom
 					case CREDITS:
 						credits = new SceneCredits(this);
 						addChild(credits);
+						break;
+					
+					case SCORE:
+						score = new SceneScore(this);
+						addChild(score);
 						break;
 				}
 			}

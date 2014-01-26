@@ -25,8 +25,9 @@ package custom.components
 		public var distance:int = 0;
 		public var bullet:Quad = new Quad(10,10, Color.RED);
 		public var healths:Array = [new Image(Assets.getAtlas().getTexture("vaseBroken1")),new Image(Assets.getAtlas().getTexture("vaseBroken2")),
+			new Image(Assets.getAtlas().getTexture("vaseBroken3")),new Image(Assets.getAtlas().getTexture("vaseBroken4")),
 			new Image(Assets.getAtlas().getTexture("vaseBroken3")),new Image(Assets.getAtlas().getTexture("vaseBroken4"))];
-		public var healthNum:int = 3;
+		public var healthNum:int = 5;
 		public var alive:Boolean = true;
 				
 		public function Hero()
@@ -56,7 +57,11 @@ package custom.components
 			addChild(eye1);
 			addChild(eye2);
 			addChild(bullet);
+			var i:int = 0;
 			for each (var health:Image in healths) {
+				health.y+=250;
+				health.x+=100*i
+				i+=1;
 				addChild(health);
 			}
 		}
@@ -110,9 +115,12 @@ package custom.components
 			trace("losing health: " + healthNum);
 			removeChild(healths[healthNum]);
 			healthNum -= 1;
+			if (healthNum < 0) {
+				alive = false;
+			}
 		}
 		public function isAlive():Boolean {
-			return alive;
+			return true;
 		}
 	}
 }

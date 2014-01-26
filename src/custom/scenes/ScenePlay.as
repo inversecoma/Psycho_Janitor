@@ -3,6 +3,7 @@ package custom.scenes
 	import com.greensock.TimelineLite;
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Elastic;
+	import com.greensock.easing.Linear;
 	
 	import custom.Assets;
 	import custom.SceneController;
@@ -11,6 +12,7 @@ package custom.scenes
 	import custom.components.Hero;
 	
 	import starling.display.Button;
+	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.Touch;
@@ -20,11 +22,12 @@ package custom.scenes
 	public class ScenePlay extends Sprite
 	{
 		private var sceneController:SceneController;
-		private var background:Background = new Background(Main.stageHeight,Main.stageWidth);
 		private var hero:Hero = new Hero();
-		public var enemies:Array = [new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(0)];
-		public var features:Array = [new Enemy(1),new Enemy(2),new Enemy(3),new Enemy(4),new Enemy(5),new Enemy(1),new Enemy(3),new Enemy(1),new Enemy(0),new Enemy(1)];
-
+		public var enemies:Array = [new Enemy(0),new Enemy(1),new Enemy(0),new Enemy(1),new Enemy(0),new Enemy(0),new Enemy(0),new Enemy(1),new Enemy(1),new Enemy(0)];
+		public var features:Array = [new Enemy(2),new Enemy(3),new Enemy(4),new Enemy(5),new Enemy(2),new Enemy(3),new Enemy(4),new Enemy(5),new Enemy(2),new Enemy(4)];
+		private var background:Background = new Background(Main.stageHeight,Main.stageWidth);
+		private var bgTween:TimelineLite;
+		
 		public var enemyNum:int = 0;
 		public var featureNum:int = 0;
 		
@@ -44,10 +47,11 @@ package custom.scenes
 			trace("on added to stage in scene play");
 
 			addChild(background);
+			
 			addChild(hero);
 			
 			hero.x = Main.stageWidth/3 - hero.width/2;
-			hero.yStartPosition = Main.stageHeight*2/3 - hero.height/2;
+			hero.yStartPosition = Main.stageHeight*2/3 - 100;
 			hero.y = hero.yStartPosition;
 			
 			var timeline:TimelineLite = new TimelineLite();
@@ -70,12 +74,12 @@ package custom.scenes
 		public function enterFrame(e:Event):void
 		{
 			
-			background.update(hero);
 			hero.update();
+			background.update(hero);
 			//trace(enemyNum);
-			if (hero.distance % 200 == 0) {
+			if (hero.distance % 1000 == 0) {
 				//enemies[enemyNum] = new Enemy(0);
-				enemies[enemyNum].fullImage.x = 1300;
+				enemies[enemyNum].fullImage.x = Main.stageWidth;
 				enemies[enemyNum].fullImage.y = 400;
 				enemies[enemyNum].spawn();
 				addChild(enemies[enemyNum]);
@@ -84,9 +88,9 @@ package custom.scenes
 					enemyNum = 0;
 				}
 			}
-			if (hero.distance % 1720 == 0 || hero.distance % 1150 == 0) {
+			if (hero.distance % 3800 == 0) {
 				//features[featureNum] = new Enemy(1);
-				features[featureNum].fullImage.x = 1300;
+				features[featureNum].fullImage.x = Main.stageWidth;
 				features[featureNum].fullImage.y = 100 + Math.round(Math.random()*100 - Math.random()*100);
 				features[featureNum].spawn();
 				addChild(features[featureNum]);

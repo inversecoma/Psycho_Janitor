@@ -64,7 +64,7 @@ package
 			trumpet = new Trumpet();
 			trumpet.play();
 			
-			TweenLite.delayedCall(4, startStarling);
+			TweenLite.delayedCall(0, startStarling);
 		}
 		
 		private function startStarling():void
