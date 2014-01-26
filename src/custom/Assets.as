@@ -10,12 +10,17 @@ package custom
 	{
 		private static var gameTextures:Dictionary = new Dictionary();
 		private static var gameTextureAtlas:TextureAtlas;
+		private static var gameTextureAtlas1:TextureAtlas;
 		
 		[Embed(source="../assets/atlas.png")]
 		public static const AtlasTextureGame:Class;
-		
 		[Embed(source="../assets/atlas.xml", mimeType="application/octet-stream")]
 		public static const AtlasXMLGame:Class;
+		
+		[Embed(source="../assets/atlas2.png")]
+		public static const AtlasTextureGame1:Class;
+		[Embed(source="../assets/atlas2.xml", mimeType="application/octet-stream")]
+		public static const AtlasXMLGame1:Class;
 		
 		
 		public static function getTexture(name:String):Texture
@@ -28,15 +33,31 @@ package custom
 			return gameTextures[name];
 		}
 		
-		public static function getAtlas():TextureAtlas
+		public static function getAtlas(atlas:int = 0):TextureAtlas
 		{
-			if(gameTextureAtlas == null)
+			switch(atlas)
 			{
-				var texture:Texture = getTexture("AtlasTextureGame");
-				var xml:XML = XML(new AtlasXMLGame());
-				gameTextureAtlas = new TextureAtlas(texture, xml);
+				case 0:
+					if(gameTextureAtlas == null)
+					{
+						var texture:Texture = getTexture("AtlasTextureGame");
+						var xml:XML = XML(new AtlasXMLGame());
+						gameTextureAtlas = new TextureAtlas(texture, xml);
+					}
+					return gameTextureAtlas;
+					break;
+				
+				case 1:
+					if(gameTextureAtlas1 == null)
+					{
+						var texture:Texture = getTexture("AtlasTextureGame1");
+						var xml:XML = XML(new AtlasXMLGame1());
+						gameTextureAtlas1 = new TextureAtlas(texture, xml);
+					}
+					return gameTextureAtlas1;
+					break;
 			}
-			return gameTextureAtlas;
+			return null;
 		}
 	}
 }

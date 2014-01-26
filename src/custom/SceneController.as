@@ -1,29 +1,36 @@
 package custom
 {
+	import com.greensock.TimelineLite;
 	import com.greensock.TweenLite;
 	
 	import custom.scenes.SceneCredits;
-	import custom.scenes.SceneStore;
 	import custom.scenes.ScenePlay;
-	import custom.scenes.SceneSplash;
+	import custom.scenes.SceneIntro;
 	import custom.scenes.SceneStart;
+	import custom.scenes.SceneStore;
 	
+	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
 
 	public class SceneController extends Sprite
 	{
-		public const SPLASH:int  = 0;
-		public const START:int 	 = 1;
-		public const PLAY:int 	 = 2;
-		public const STORE:int 	 = 3;
+		public const START:int   = 0;
+		public const INTRO:int 	 = 1;
+		public const STORE:int 	 = 2;
+		public const PLAY:int 	 = 3;
 		public const CREDITS:int = 4;
 		
-		private var splash:SceneSplash;
+		private var intro:SceneIntro;
 		private var start:SceneStart;
 		private var play:ScenePlay;
 		private var store:SceneStore;
 		private var credits:SceneCredits;
+		
+		private var storedScene:Sprite;
+		private var face:Image;
+		
+		private var timeline:TimelineLite;
 
 		public function SceneController()
 		{
@@ -36,45 +43,57 @@ package custom
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
+			face = new Image(Assets.getAtlas(1).getTexture("frontface"));
+			face.y = Main.stageHeight;
+			face.x = Main.stageWidth/2-face.width/2;
+			addChild(face);
+			
 			nav(null, START);
 		}
 		
 		public function nav(fromScene:Sprite, toScene:int, delay:Number=0):void
 		{
-			if(delay > 0)
+			if(fromScene != null)
 			{
-				TweenLite.delayedCall(delay, nav, [fromScene, toScene]);
+				storedScene = fromScene;
+
+				face.y = Main.stageHeight;
+				timeline = new TimelineLite();
+				timeline.append(TweenLite.to(face, .75, {y:Main.stageHeight/2 - face.height/2}));
+				timeline.append(TweenLite.to(face, .25, {}));
+				timeline.append(TweenLite.delayedCall(0, nav, [null, toScene]));
+				timeline.append(TweenLite.to(face, .75, {y:-face.height}));
 			}
 			else
 			{
-				if(fromScene)
-					fromScene.parent.removeChild(fromScene);
+				if(storedScene!=null && storedScene.parent)
+					storedScene.parent.removeChild(storedScene);
 				
 				switch(toScene)
 				{
-					case SPLASH:
-						splash = new SceneSplash(this);
-						addChild(splash);
-						break;
-					
 					case START:
 						start = new SceneStart(this);
-						addChild(start);
+						addChildAt(start, getChildIndex(face));
 						break;
 					
-					case PLAY:
-						play = new ScenePlay(this);
-						addChild(play);
+					case INTRO:
+						intro = new SceneIntro(this);
+						addChildAt(intro, getChildIndex(face));
 						break;
 					
 					case STORE:
 						store = new SceneStore(this);
-						addChild(store);
+						addChildAt(store, getChildIndex(face));
+						break;
+					
+					case PLAY:
+						play = new ScenePlay(this);
+						addChildAt(play, getChildIndex(face));
 						break;
 					
 					case CREDITS:
 						credits = new SceneCredits(this);
-						addChild(credits);
+						addChildAt(credits, getChildIndex(face));
 						break;
 				}
 			}

@@ -4,6 +4,7 @@ package
 	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
+	import flash.display.StageDisplayState;
 	import flash.display.StageScaleMode;
 	import flash.filesystem.File;
 	import flash.geom.Rectangle;
@@ -40,10 +41,11 @@ package
 			//stage properties
 			stage.color = 0x000000;
 			stage.frameRate = 60;
+			stage.displayState = StageDisplayState.NORMAL; 
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT
-			stageWidth  = stage.fullScreenWidth;
-			stageHeight = stage.fullScreenHeight;
+			stageWidth  = 1280;
+			stageHeight = 720;
 			
 			scale = stageHeight / 720;
 			
@@ -71,7 +73,6 @@ package
 			vid.y = stageHeight/2 - vid.height/2;
 			addChild(vid);
 			ns.play(videoFile.url);
-			
 			trumpet = new Trumpet();
 			trumpet.play();
 		}

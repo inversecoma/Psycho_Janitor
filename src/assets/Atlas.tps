@@ -167,7 +167,6 @@
         <key>fileList</key>
         <array>
             <filename>parts/background/Background.png</filename>
-            <filename>parts/features/background/pillar.png</filename>
             <filename>parts/features/background/painting1.png</filename>
             <filename>parts/features/background/painting2.png</filename>
             <filename>parts/features/background/painting3.png</filename>
@@ -203,6 +202,7 @@
             <filename>parts/weapons/weaponShovel.png</filename>
             <filename>parts/weapons/weaponBroom.png</filename>
             <filename>parts/weapons/weaponMop.png</filename>
+            <filename>parts/features/background/pillar.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

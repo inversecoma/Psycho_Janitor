@@ -73,7 +73,7 @@ package custom.scenes
 			bgTween.insert(TweenLite.to(bg, 20, {x:-background.width, ease:Linear.easeNone, onComplete:loopBG}));
 			
 			var pressToPlay:Image = new Image(Assets.getAtlas().getTexture("pressToStart"));
-			pressToPlay.scaleX = pressToPlay.scaleY = .5 * Main.scale;
+			pressToPlay.scaleX = pressToPlay.scaleY = .75 * Main.scale;
 			pressToPlay.x = Main.stageWidth/2 - pressToPlay.width/2;
 			pressToPlay.y = Main.stageHeight - pressToPlay.height*2 - 38;
 			addChild(pressToPlay);
@@ -82,7 +82,7 @@ package custom.scenes
 			pressTimeline.append(TweenLite.to(pressToPlay, 1, {alpha:0}));
 			pressTimeline.append(TweenLite.to(pressToPlay, 1, {alpha:1, onComplete:loopPress}));
 			
-			bg.addEventListener(TouchEvent.TOUCH, buttonListener);
+			stage.addEventListener(TouchEvent.TOUCH, buttonListener);
 		}
 		
 		private function loopPress():void
@@ -94,17 +94,11 @@ package custom.scenes
 		{
 			bgTween.restart();
 		}
-		
-		private function animateOut():TimelineLite
-		{
-			var timeline:TimelineLite = new TimelineLite();
-			
-			timeline.insert(TweenLite.to(background, .75, {scaleX:0, scaleY:0}), .2);
-			timeline.insert(TweenLite.to(title, 1, {x:-title.width}), .2);
-			timeline.insert(TweenLite.to(start, .4, {y:start.y + start.height}), .2);
-			
-			return timeline;
-		}
+//		
+//		private function animateOut():TimelineLite
+//		{
+//			
+//		}
 		
 		private function buttonListener(e:TouchEvent):void
 		{
@@ -117,9 +111,9 @@ package custom.scenes
 						break;
 					
 					case TouchPhase.ENDED:
-						sceneController.nav(this, sceneController.STORE, animateOut().duration());
+						sceneController.nav(this, sceneController.STORE);
 						
-						bg.removeEventListener(TouchEvent.TOUCH, buttonListener);
+						//stage.removeEventListener(TouchEvent.TOUCH, buttonListener);
 						break;
 				}
 			}
