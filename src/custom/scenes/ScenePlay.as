@@ -4,6 +4,8 @@ package custom.scenes
 	import com.greensock.TweenLite;
 	import com.greensock.easing.Elastic;
 	
+	import flash.media.Sound;
+	
 	import custom.SceneController;
 	import custom.components.Background;
 	import custom.components.Enemy;
@@ -26,6 +28,11 @@ package custom.scenes
 		
 		public var enemyNum:int = 0;
 		public var featureNum:int = 0;
+		
+		[Embed(source="../../assets/audio/music/pluckd.mp3")]
+		private var Music:Class;
+		
+		private var music:Sound;
 		
 		public function ScenePlay(sceneController:SceneController)
 		{
@@ -55,11 +62,14 @@ package custom.scenes
 			timeline.insert(TweenLite.from(hero, 1, {y:Main.stageHeight, ease:Elastic.easeOut, easeParams:[2, 1]}));	
 			
 			stage.addEventListener(TouchEvent.TOUCH, touchListener);
+			
+			music = Music();
+			music.play();
 		}
 		
 		public function enterFrame(e:Event):void
 		{
-			
+			background.update(hero);
 			hero.update();
 			background.update(hero);
 			//trace(enemyNum);

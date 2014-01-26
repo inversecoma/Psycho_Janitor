@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>sparrow</string>
         <key>textureFileName</key>
-        <filename>atlas.png</filename>
+        <filename>atlas3.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -75,9 +75,9 @@
         <key>fixedTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>-1</int>
             <key>height</key>
-            <int>2048</int>
+            <int>-1</int>
         </QSize>
         <key>reduceBorderArtifacts</key>
         <false/>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>atlas.xml</filename>
+                <filename>atlas3.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -166,46 +166,25 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>parts/background/Background.png</filename>
-            <filename>parts/features/background/painting1.png</filename>
-            <filename>parts/features/background/painting2.png</filename>
-            <filename>parts/features/background/painting3.png</filename>
-            <filename>parts/features/background/painting4.png</filename>
-            <filename>parts/features/misc/sculpture.png</filename>
-            <filename>parts/features/misc/dress.png</filename>
-            <filename>parts/features/misc/globe.png</filename>
-            <filename>parts/features/misc/kingTut.png</filename>
-            <filename>parts/features/misc/pedastal.png</filename>
-            <filename>parts/features/shrub/shrubFull.png</filename>
-            <filename>parts/features/shrub/shrubBroken1.png</filename>
-            <filename>parts/features/shrub/shrubBroken2.png</filename>
-            <filename>parts/features/shrub/shrubBroken3.png</filename>
-            <filename>parts/features/shrub/shrubBroken4.png</filename>
-            <filename>parts/features/shrub/shrubBroken5.png</filename>
-            <filename>parts/features/vase/vaseFull.png</filename>
-            <filename>parts/features/vase/vaseBroken1.png</filename>
-            <filename>parts/features/vase/vaseBroken2.png</filename>
-            <filename>parts/features/vase/vaseBroken3.png</filename>
-            <filename>parts/features/vase/vaseBroken4.png</filename>
-            <filename>parts/features/vase/vaseBroken5.png</filename>
-            <filename>parts/intro/title.png</filename>
-            <filename>parts/intro/pressToStart.png</filename>
-            <filename>parts/store/pills.png</filename>
-            <filename>parts/store/shoes1.png</filename>
-            <filename>parts/store/shoes2.png</filename>
-            <filename>parts/store/dumbell.png</filename>
-            <filename>parts/store/lockerBG.png</filename>
-            <filename>parts/store/lockerDoor.png</filename>
-            <filename>parts/store/mod1.png</filename>
-            <filename>parts/store/mod2.png</filename>
-            <filename>parts/store/mod3.png</filename>
-            <filename>parts/weapons/weaponShovel.png</filename>
-            <filename>parts/weapons/weaponBroom.png</filename>
-            <filename>parts/weapons/weaponMop.png</filename>
-            <filename>parts/features/background/pillar.png</filename>
-            <filename>parts/store/tanbox.png</filename>
-            <filename>parts/store/purchasebox.png</filename>
-            <filename>parts/store/redx.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_12.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_13.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_14.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_15.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_16.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_17.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_18.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_1.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_2.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_3.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_4.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_5.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_6.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_7.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_8.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_9.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_10.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_11.png</filename>
+            <filename>parts/janitor/animation/run/walk cycle_19.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
