@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:e18935ea349b3d9c2ef93fdca4e9d945:c3aecd41c4ecd8f17aea8b7c8a140f81:cde709370900f12288f3449eded86f07$ -->
+<!-- $TexturePacker:SmartUpdate:787dadb9f87ab31d17f2a73e25c93208:f20eb090c6c8dddfd23a4f9722d39d52:cde709370900f12288f3449eded86f07$ -->
 <TextureAtlas imagePath="atlas.png">
-    <SubTexture name="start_default" x="100" y="92" width="94" height="26" frameX="0" frameY="-1" frameWidth="96" frameHeight="32"/>
-    <SubTexture name="start_over" x="2" y="92" width="96" height="32"/>
-    <SubTexture name="title" x="2" y="2" width="230" height="88" frameX="-13" frameY="-5" frameWidth="256" frameHeight="96"/>
-    <SubTexture name="vaseBroken1" x="422" y="2" width="63" height="68"/>
-    <SubTexture name="vaseBroken2" x="2" y="126" width="70" height="77"/>
-    <SubTexture name="vaseBroken3" x="356" y="2" width="64" height="64"/>
-    <SubTexture name="vaseBroken4" x="356" y="68" width="60" height="60"/>
-    <SubTexture name="vaseBroken5" x="100" y="120" width="76" height="57"/>
-    <SubTexture name="vaseFull" x="234" y="2" width="120" height="148" frameX="-17" frameY="-4" frameWidth="150" frameHeight="160"/>
+    <SubTexture name="background" x="2" y="724" width="1280" height="720"/>
+    <SubTexture name="dress" x="2" y="1860" width="84" height="175"/>
+    <SubTexture name="dumbell" x="223" y="1798" width="247" height="100"/>
+    <SubTexture name="globe" x="567" y="1446" width="71" height="90"/>
+    <SubTexture name="kingTut" x="1932" y="765" width="87" height="250"/>
+    <SubTexture name="lockerBG" x="2" y="2" width="1284" height="720"/>
+    <SubTexture name="lockerDoor" x="1288" y="188" width="642" height="720"/>
+    <SubTexture name="mod1" x="290" y="1446" width="76" height="125"/>
+    <SubTexture name="mod2" x="457" y="1610" width="79" height="100"/>
+    <SubTexture name="mod3" x="163" y="1446" width="125" height="125"/>
+    <SubTexture name="painting1" x="1932" y="638" width="108" height="125"/>
+    <SubTexture name="painting2" x="368" y="1446" width="116" height="100"/>
+    <SubTexture name="painting3" x="369" y="1639" width="86" height="100"/>
+    <SubTexture name="painting4" x="251" y="1643" width="116" height="100"/>
+    <SubTexture name="pedastal" x="88" y="1850" width="133" height="150"/>
+    <SubTexture name="pillar" x="1932" y="216" width="109" height="420"/>
+    <SubTexture name="pills" x="486" y="1446" width="79" height="100"/>
+    <SubTexture name="sculpture" x="1939" y="64" width="92" height="150"/>
+    <SubTexture name="shoes1" x="421" y="1900" width="196" height="100"/>
+    <SubTexture name="shoes2" x="223" y="1900" width="196" height="100"/>
+    <SubTexture name="shrubBroken1" x="457" y="1712" width="62" height="57"/>
+    <SubTexture name="shrubBroken2" x="2033" y="64" width="12" height="34"/>
+    <SubTexture name="shrubBroken3" x="163" y="1573" width="81" height="69"/>
+    <SubTexture name="shrubBroken4" x="2021" y="765" width="16" height="35"/>
+    <SubTexture name="shrubBroken5" x="88" y="2002" width="57" height="41"/>
+    <SubTexture name="shrubFull" x="2" y="1446" width="81" height="210"/>
+    <SubTexture name="start_default" x="1939" y="36" width="94" height="26" frameX="0" frameY="-1" frameWidth="96" frameHeight="32"/>
+    <SubTexture name="start_over" x="1939" y="2" width="96" height="32"/>
+    <SubTexture name="title" x="1288" y="2" width="649" height="184"/>
+    <SubTexture name="vaseBroken1" x="246" y="1573" width="63" height="68"/>
+    <SubTexture name="vaseBroken2" x="377" y="1548" width="70" height="77"/>
+    <SubTexture name="vaseBroken3" x="311" y="1573" width="64" height="64"/>
+    <SubTexture name="vaseBroken4" x="449" y="1548" width="60" height="60"/>
+    <SubTexture name="vaseBroken5" x="511" y="1548" width="76" height="57"/>
+    <SubTexture name="vaseFull" x="129" y="1648" width="120" height="148" frameX="-17" frameY="-4" frameWidth="150" frameHeight="160"/>
+    <SubTexture name="weaponBroom" x="2" y="1658" width="84" height="200"/>
+    <SubTexture name="weaponMop" x="85" y="1446" width="76" height="200"/>
+    <SubTexture name="weaponShovel" x="88" y="1648" width="39" height="200"/>
 </TextureAtlas>

@@ -36,7 +36,7 @@ package custom
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
-			nav(null, PLAY);
+			nav(null, START);
 		}
 		
 		public function nav(fromScene:Sprite, toScene:int, delay:Number=0):void
