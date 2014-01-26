@@ -11,6 +11,7 @@ package custom
 		private static var gameTextures:Dictionary = new Dictionary();
 		private static var gameTextureAtlas:TextureAtlas;
 		private static var gameTextureAtlas1:TextureAtlas;
+		private static var gameTextureAtlas2:TextureAtlas;
 		
 		[Embed(source="../assets/atlas.png")]
 		public static const AtlasTextureGame:Class;
@@ -22,6 +23,10 @@ package custom
 		[Embed(source="../assets/atlas2.xml", mimeType="application/octet-stream")]
 		public static const AtlasXMLGame1:Class;
 		
+		[Embed(source="../assets/atlas3.png")]
+		public static const AtlasTextureGame2:Class;
+		[Embed(source="../assets/atlas3.xml", mimeType="application/octet-stream")]
+		public static const AtlasXMLGame2:Class;
 		
 		public static function getTexture(name:String):Texture
 		{
@@ -55,6 +60,16 @@ package custom
 						gameTextureAtlas1 = new TextureAtlas(texture, xml);
 					}
 					return gameTextureAtlas1;
+					break;
+				
+				case 2:
+					if(gameTextureAtlas2 == null)
+					{
+						var texture:Texture = getTexture("AtlasTextureGame2");
+						var xml:XML = XML(new AtlasXMLGame2());
+						gameTextureAtlas2 = new TextureAtlas(texture, xml);
+					}
+					return gameTextureAtlas2;
 					break;
 			}
 			return null;

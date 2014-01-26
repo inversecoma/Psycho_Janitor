@@ -1,25 +1,24 @@
 package custom.scenes
 {
-	import com.greensock.TimelineLite;
-	import com.greensock.TweenLite;
-	
 	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	
 	import custom.SceneController;
 	
-	import starling.display.Quad;
 	import starling.display.Sprite;
 	import starling.events.Event;
-	import starling.text.TextField;
 
 	public class SceneIntro extends Sprite
 	{
-		[Embed(source="../../assets/audio/music/baller.mp3")]
+		[Embed(source="../../assets/audio/music/jazz fast.mp3")]
 		private var Music:Class;
 		
 		private var sceneController:SceneController;
 		
-		private var splashSound:Sound;
+		private var music:Sound;
+		private var channel:SoundChannel;
+		private var transform:SoundTransform;
 		
 		public function SceneIntro(sceneController:SceneController)
 		{
@@ -34,7 +33,9 @@ package custom.scenes
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
-			//splashSound = new SplashSound();
+			music = new Music();
+			channel = music.play(0, 99999);
+			transform = new SoundTransform(1, 0);
 			
 			animate();
 		}
@@ -68,6 +69,16 @@ package custom.scenes
 //			timeline.append(TweenLite.to(logo, .2, {scaleX:2, scaleY:0}));
 //			
 //			sceneController.nav(this, sceneController.START, timeline.duration());
+		}
+		
+		private function stopSound():void
+		{
+			channel.stop();
+		}
+		
+		private function updateTrans():void
+		{
+			channel.soundTransform = transform;
 		}
 	}
 }

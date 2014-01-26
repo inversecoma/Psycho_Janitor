@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:3f9b957dd9a1246fc9a94fd45e01f94a:86d1bfbed47c98e3da8e285d8f0a1a8d:e477afcbcd9416ff16a79df572fe7a51$ -->
+<TextureAtlas imagePath="atlas3.png">
+    <SubTexture name="walk cycle_1" x="2" y="2" width="140" height="335" frameX="-35" frameY="-8" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_2" x="2" y="672" width="120" height="331" frameX="-56" frameY="-9" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_3" x="408" y="658" width="134" height="323" frameX="-44" frameY="-10" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_4" x="544" y="652" width="142" height="315" frameX="-37" frameY="-11" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_5" x="680" y="2" width="142" height="309" frameX="-37" frameY="-14" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_6" x="540" y="2" width="138" height="319" frameX="-42" frameY="-15" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_7" x="124" y="672" width="126" height="329" frameX="-53" frameY="-16" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_8" x="144" y="2" width="134" height="331" frameX="-44" frameY="-20" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_9" x="252" y="664" width="154" height="325" frameX="-23" frameY="-25" frameWidth="222" frameHeight="361"/>
+<SubTexture name="walk cycle_10" x="300" y="331" width="154" height="325" frameX="-22" frameY="-26" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_11" x="158" y="335" width="140" height="327" frameX="-35" frameY="-25" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_12" x="416" y="2" width="122" height="325" frameX="-51" frameY="-23" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_13" x="584" y="323" width="134" height="315" frameX="-38" frameY="-25" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_14" x="824" y="301" width="142" height="303" frameX="-29" frameY="-27" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_15" x="824" y="2" width="144" height="297" frameX="-27" frameY="-28" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_16" x="688" y="640" width="138" height="309" frameX="-32" frameY="-24" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_17" x="456" y="329" width="126" height="321" frameX="-44" frameY="-21" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_18" x="280" y="2" width="134" height="327" frameX="-37" frameY="-18" frameWidth="222" frameHeight="361"/>
+    <SubTexture name="walk cycle_19" x="2" y="339" width="154" height="331" frameX="-20" frameY="-11" frameWidth="222" frameHeight="361"/>
+</TextureAtlas>
