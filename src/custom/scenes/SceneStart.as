@@ -66,8 +66,8 @@ package custom.scenes
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
-			background = new Image(Assets.getAtlas().getTexture("background"));
-			background2 = new Image(Assets.getAtlas().getTexture("background"));
+			background = new Image(Assets.getAtlas().getTexture("Background"));
+			background2 = new Image(Assets.getAtlas().getTexture("Background"));
 			background2.x = background2.width-1;
 			bg = new Sprite();
 			bg.addChild(background);

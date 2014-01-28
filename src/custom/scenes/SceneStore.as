@@ -77,6 +77,7 @@ package custom.scenes
 						break;
 					
 					case TouchPhase.ENDED:
+						channel.stop();
 						sceneController.nav(this, sceneController.PLAY);
 						break;
 				}

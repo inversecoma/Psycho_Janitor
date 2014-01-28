@@ -24,9 +24,8 @@ package custom.components
 				
 		private function onAddedToStage():void
 		{
-			
-			background = new Image(Assets.getAtlas().getTexture("background"));
-			background2 = new Image(Assets.getAtlas().getTexture("background"));
+			background = new Image(Assets.getAtlas().getTexture("Background"));
+			background2 = new Image(Assets.getAtlas().getTexture("Background"));
 			background2.x += background.width;
 			addChild(background);
 			addChild(background2);
@@ -36,8 +35,8 @@ package custom.components
 		{
 			background.x -= hero.speed;
 			background2.x -= hero.speed;
-			trace("x1: " + background.x);
-			trace("x2: " + background2.x);
+			trace("Background x1: " + background.x);
+			trace("Backgroundx2: " + background2.x);
 			if (background.x < -background.width) {
 				background.x += background.width*2
 			}
