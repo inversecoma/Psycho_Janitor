@@ -63,17 +63,16 @@ package custom.scenes
 			
 			stage.addEventListener(TouchEvent.TOUCH, touchListener);
 			
-			music = Music();
+			music = new Music();
 			music.play();
 		}
 		
 		public function enterFrame(e:Event):void
 		{
-			background.update(hero);
 			hero.update();
 			background.update(hero);
 			//trace(enemyNum);
-			if (hero.distance % 1500 == 0) {
+			if (hero.distance % 550 == 0) {
 				//enemies[enemyNum] = new Enemy(0);
 				enemies[enemyNum].fullImage.x = Main.stageWidth;
 				enemies[enemyNum].fullImage.y = enemies[enemyNum].getYPos();
@@ -82,14 +81,14 @@ package custom.scenes
 					addChild(enemies[enemyNum]);
 				}
 				else {
-					addChildAt(enemies[enemyNum], getChildIndex(hero));
+					addChildAt(enemies[enemyNum], getChildIndex(hero)-1);
 				}
 				enemyNum+=1;
 				if (enemyNum % 10 == 0) {
 					enemyNum = 0;
 				}
 			}
-			if (hero.distance % 3000 == 0) {
+			if (hero.distance % 2000 == 0 || hero.distance % 5000 == 0 || hero.distance % 10000 == 100 || hero.distance % 3000 == 0) {
 				//features[featureNum] = new Enemy(1);
 				features[featureNum].fullImage.x = Main.stageWidth;
 				features[featureNum].fullImage.y = 100 + Math.round(Math.random()*100 - Math.random()*100);
@@ -100,7 +99,7 @@ package custom.scenes
 					featureNum = 0;
 				}
 			}
-			for each (var enemy in enemies) {
+			for each (var enemy:Enemy in enemies) {
 				if (enemy.spawned) {
 					enemy.update(hero);
 				}

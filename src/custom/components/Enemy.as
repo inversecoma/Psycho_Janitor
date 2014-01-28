@@ -25,6 +25,7 @@ package custom.components
 		public var damages:Boolean = false;
 		public var typeOfEnemy:int;
 		public var yPos:int = 400;
+		public var speedModifier:int = 1;
 		
 		public function Enemy(TypeOfEnemy)
 		{
@@ -53,16 +54,16 @@ package custom.components
 					destroyable = true;
 					this.yPos = 400;
 					break;
-				case MACE:
+				case 2:
 					fullImage = new Image(Assets.getAtlas().getTexture("painting1"));
 					break;
-				case RACE:
+				case 3:
 					fullImage = new Image(Assets.getAtlas().getTexture("painting2"));
 					break;
-				case CHASE:
+				case 4:
 					fullImage = new Image(Assets.getAtlas().getTexture("painting3"));
 					break;
-				case PACE:
+				case 5:
 					fullImage = new Image(Assets.getAtlas().getTexture("painting4"));
 					break;
 				case 6:
@@ -76,11 +77,12 @@ package custom.components
 				case 8:
 					fullImage = new Image(Assets.getAtlas().getTexture("pillar"));
 					this.yPos = -20;
+					this.speedModifier = 2;
 					fullImage.scaleX = fullImage.scaleY = 1.8;
 					break;
 				case 9:
 					fullImage = new Image(Assets.getAtlas().getTexture("sculpture"));
-					this.yPos = 100;
+					this.yPos = 208;
 					break;
 				case 10:
 					fullImage = new Image(Assets.getAtlas().getTexture("dress"));
@@ -92,7 +94,8 @@ package custom.components
 		
 		public function update(hero:Hero):void {
 			if (spawned) {
-				fullImage.x -= hero.speed;
+				fullImage.x -= hero.speed*speedModifier;
+				trace("Enemy x:" + fullImage.x);
 			}
 			if (fullImage.getBounds(this).intersects(hero.getBounds(this)) && spawned){
 				if (hero.isAttacking() && this.destroyable) {
@@ -108,11 +111,12 @@ package custom.components
 		public function move(hero):void {
 			if (spawned) {
 				if (this.getTypeOfEnemy() == 8) {
-					fullImage.x -= hero.speed * 2;
+					fullImage.x -= hero.speed*speedModifier;
 				}
 				else {
-					fullImage.x -= hero.speed;
+					fullImage.x -= hero.speed*speedModifier;
 				}
+				trace("Enemy x:" + fullImage.x);
 			}
 		}
 		
@@ -131,6 +135,12 @@ package custom.components
 		public function spawn():void {
 			trace("spawnin!");
 			spawned = true;
+			if (this.typeOfEnemy == 7) {
+				fullImage.x += 1080;
+			}
+			if (this.typeOfEnemy == 10) {
+				fullImage.x += 1000 + Math.round(Math.random()*280);
+			}
 			addChild(fullImage);
 		}
 		
